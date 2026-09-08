@@ -1,39 +1,35 @@
-# DVWA: Command Injection Walkthrough
+# DVWA Practice
 
-This repository contains my step-by-step exploitation of the Command Injection module in the Damn Vulnerable Web Application (DVWA). 
+This repository is a small cybersecurity practice workspace focused on web application exploitation, CTF walkthroughs, and security research.
 
-## Objective
-To successfully execute arbitrary operating system commands on the host server across Low, Medium, and High security configurations.
+## Purpose
 
-## Exploit Breakdown
+The projects in this repository are intended for educational and lab-based learning. They document common vulnerabilities and practical exploitation techniques in a controlled environment.
 
-### 1. Low Security
-* **Vulnerability:** Zero input validation on the `ip` parameter before passing it to `shell_exec()`.
-* **Payload:** `127.0.0.1 ; cat /etc/passwd`
-* **Result:** The `;` operator allowed sequential execution, successfully dumping the user database.
+## Included Workspaces
 
-![Low Security Exploit](DVWA_SCREENSHOTS/Easy.png)
+- [Command-Injection/README.md](Command-Injection/README.md)
+  Walkthrough for the DVWA Command Injection module, including Low, Medium, and High security bypasses.
 
-### 2. Medium Security
-* **Vulnerability:** Weak blacklist filtering. The PHP script only stripped `;` and `&&`. 
-* **Payload:** `127.0.0.1 | whoami`
-* **Result:** Bypassed the blacklist using the pipe operator, executing the command as the web server user.
+- [picoCTF/Crack-the-Gate/README.md](picoCTF/Crack-the-Gate/README.md)
+  Write-up for the picoCTF challenge "Crack the Gate," showing how to bypass a login flow using source inspection and request header manipulation.
 
-![Medium Security Exploit](DVWA_SCREENSHOTS/MEDIUM.png)
+- [DVWA_SCREENSHOTS/](DVWA_SCREENSHOTS/)
+  Screenshots captured while testing or documenting the exercises.
 
-### 3. High Security
-* **Vulnerability:** Filter evasion via developer typo. The blacklist targeted `'| '` (pipe followed by a space).
-* **Payload:** `127.0.0.1|cat /etc/passwd`
-* **Result:** By omitting the space, the payload evaded the filter and executed successfully. 
+- [LICENSE](LICENSE)
+  Repository licensing information.
 
-![High Security Exploit](DVWA_SCREENSHOTS/Hard.png)
+## Notes
 
-## Key Takeaway
-Blacklisting characters is an ineffective security measure. Secure applications must rely on strict input validation (whitelisting) and avoid dangerous system calls like `shell_exec()` whenever possible.
-# My Cybersecurity Journey
+- Use these materials only in safe, authorized lab environments.
+- Do not test against systems you do not own or have explicit permission to evaluate.
+- The goal is to learn vulnerability analysis and secure coding practices in a responsible way.
 
-Detailed walkthroughs and solutions for CTF challenges, focusing on web exploitation, network security, and more.
+## Learning Focus
 
-## 🚀 picoCTF Solutions
-* **Crack the Gate** - [View Solution](./picoCTF/Crack-the-Gate/)
-  * [cite_start]Bypassed a login gate using source code analysis and `curl`[cite: 3, 30].
+- Web application security
+- Input validation and sanitization weaknesses
+- Command injection exploitation
+- Source-code review and debugging
+- CTF-style challenge solving
