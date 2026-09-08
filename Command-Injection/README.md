@@ -23,4 +23,4 @@ To successfully execute arbitrary operating system commands on the host server a
 *   **Result:** By omitting the space, the payload evaded the filter and executed successfully. 
 
 ## Key Takeaway
-Blacklisting characters is an ineffective security measure. Secure applications must rely on strict input validation (whitelisting) and avoid dangerous system calls like `shell_exec()` whenever possible.MEDIUM.PNGHard.png for hard and Easy.png for easy
+Blacklisting characters is an ineffective security measure. Secure applications must rely on strict input validation (whitelisting) and avoid dangerous system calls like `shell_exec()` whenever possible.
